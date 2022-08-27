@@ -1,0 +1,31 @@
+.searchbar {
+  display: flex;
+  height: 2.5rem;
+  width: 40rem;
+  padding: '0.25rem';
+}
+
+.searchbar input {
+  border-radius: 0.25rem;
+  background-color: rgba(255, 255, 255, 0.749);
+  backdrop-filter: blur(4px);
+  border: none;
+  width: 100%;
+  font-size: large;
+}
+
+.searchbar input:focus {
+  outline: none;
+  scale: 1;
+}
+
+.actionContainer {
+  display: flex;
+  margin-top: 1rem;
+  gap: 1rem;
+}
+
+.actionButton {
+  width: 5rem;
+  height: 2rem;
+}
