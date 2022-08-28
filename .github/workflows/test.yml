@@ -2,7 +2,8 @@ name: Lint and Test
 
 on:
   pull_request:
-    types: ['opened', 'reopened']
+    branches:
+      - master
 
 jobs:
   test:
@@ -13,10 +14,10 @@ jobs:
       - name: use Node.js
         uses: actions/setup-node@v3
       - name: install dependencies
-        run: npm i
+        run: yarn install
       - name: Lint
-        run: npm run lint
+        run: yarn run lint
       - name: Format
-        run: npm run format:fix
+        run: yarn run format:fix
       - name: Test
-        run: npm run test
+        run: yarn run test
