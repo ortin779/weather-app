@@ -1,0 +1,20 @@
+name: Lint and Test
+
+on: [push]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: use Node.js
+        uses: actions/setup-node@v3
+      - name: install dependencies
+        run: npm i
+      - name: Lint
+        run: npm run lint
+      - name: Format
+        run: npm run format:fix
+      - name: Test
+        run: npm run test
