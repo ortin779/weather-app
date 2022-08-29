@@ -546,3 +546,15 @@ export const formattedWeatherDetails = {
     },
   ],
 };
+
+export const locationDetails = {
+  name: 'Hindupur',
+  place_id: 'hindupur',
+  adm_area1: 'Andhra Pradesh',
+  adm_area2: 'Anantapur',
+  country: 'India',
+  lat: '13.82807N',
+  lon: '77.49143E',
+  timezone: 'Asia/Kolkata',
+  type: 'settlement',
+};

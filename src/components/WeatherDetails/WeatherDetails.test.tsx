@@ -13,6 +13,6 @@ test('Should render Weather details', () => {
     />
   );
 
-  const temperatureText = screen.getByText('Temperature : 17.5');
+  const temperatureText = screen.getByText('Partly sunny');
   expect(temperatureText).toBeInTheDocument();
 });
