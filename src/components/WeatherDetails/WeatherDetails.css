@@ -1,3 +1,27 @@
 .detailsCard {
-  background-color: aliceblue;
+  border-radius: 0.5rem;
+  background-color: rgba(255, 255, 255, 0.2);
+  padding: 0 10rem;
+  margin: 0 25%;
+  min-width: 300px;
+  display: flex;
+  gap: 2rem;
+  flex-direction: column;
+  justify-content: start;
+  overflow: hidden;
+}
+
+.summary {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  flex: 1;
+}
+
+.futureDetails {
+  display: flex;
+  gap: 1rem;
+  flex-direction: column;
+  flex: 2;
+  overflow: scroll;
 }

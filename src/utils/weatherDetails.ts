@@ -1,4 +1,8 @@
-import { WeatherAPIResponse, WeatherInfo } from '../models/Weather';
+import {
+  LocationAPIResponse,
+  WeatherAPIResponse,
+  WeatherInfo,
+} from '../models/Weather';
 
 export const translateWeatherResponse = (
   data: WeatherAPIResponse
@@ -28,3 +32,12 @@ export const translateWeatherResponse = (
     daily: dailyWeatherDetails,
   };
 };
+
+export function getFormattedLocationName(
+  locationDetails?: LocationAPIResponse
+) {
+  if (!locationDetails) return '';
+  const { name, adm_area1, adm_area2, country } = locationDetails;
+
+  return [name, adm_area2, adm_area1, country].join(', ');
+}

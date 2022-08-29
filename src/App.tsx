@@ -12,8 +12,9 @@ import axios from 'axios';
 import { translateWeatherResponse } from './utils/weatherDetails';
 
 function App() {
-  const [location, setLocation] = useState('');
   const API_KEY = process.env.REACT_APP_WEATHER_API_KEY;
+  const [location, setLocation] = useState('');
+  const [locationDetails, setLocationDetails] = useState<LocationAPIResponse>();
 
   const [weatherDetails] = useAsyncEffect<WeatherInfo | undefined>({
     fn: async () => {
@@ -21,6 +22,7 @@ function App() {
         `https://www.meteosource.com/api/v1/free/find_places?text=${location}&key=${API_KEY}`
       );
       if (locations.data.length > 0) {
+        setLocationDetails(locations.data[0]);
         const lat = locations.data[0].lat;
         const lon = locations.data[0].lon;
         const result = await axios.get<WeatherAPIResponse>(
@@ -40,9 +42,12 @@ function App() {
 
   return (
     <div className="App">
-      <h1>Weather App</h1>
+      <h1 className="title">Weather App</h1>
       <Searchbar onSearchKeyChange={handleLocationChange} />
-      <WeatherDetails weatherInfo={weatherDetails} />
+      <WeatherDetails
+        weatherInfo={weatherDetails}
+        locationDetails={locationDetails}
+      />
     </div>
   );
 }
