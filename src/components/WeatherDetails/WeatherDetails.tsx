@@ -8,6 +8,39 @@ type WeatherDetailsProps = {
   locationDetails?: LocationAPIResponse;
 };
 
+type DailyForecastInfoProps = {
+  forecastInfo: WeatherInfo['daily'][0];
+};
+
+const DailyForecastInfo = ({ forecastInfo }: DailyForecastInfoProps) => {
+  const {
+    day,
+    temperature,
+    temperature_max,
+    temperature_min,
+    summary,
+    icon,
+    wind,
+  } = forecastInfo;
+  return (
+    <div className={'forecastCard'}>
+      <h4>{day.toLocaleDateString()}</h4>
+      <div>
+        <img src={`/weatherIcons/${icon}.png`} alt="current weather icon" />
+        <p>{summary}</p>
+      </div>
+      <div>
+        <h4>Normal: {temperature}&deg; C</h4>
+        <h4>Min: {temperature_min}&deg; C</h4>
+        <h4>Max: {temperature_max}&deg; C</h4>
+      </div>
+      <div>
+        <p>Wind speed {wind.speed}</p>
+      </div>
+    </div>
+  );
+};
+
 export const WeatherDetails = ({
   weatherInfo,
   locationDetails,
@@ -27,21 +60,15 @@ export const WeatherDetails = ({
                 src={`/weatherIcons/${weather.current.icon}.png`}
                 alt="current weather icon"
               />
-              <h4>{weather.current.summary}</h4>
+              <div>
+                <h4>{weather.current.summary}</h4>
+                <h3>{weather.current.temperature}&deg; C</h3>
+              </div>
             </div>
-            <h3>{weather.current.temperature}&deg; C</h3>
           </div>
           <div className="futureDetails">
             {weather.daily.map((forecast, index) => {
-              return (
-                <div key={index}>
-                  <p>{forecast.day.toDateString()}</p>
-                  <p>{forecast.summary}</p>
-                  <p>{forecast.temperature}</p>
-                  <p>{forecast.temperature_min}</p>
-                  <p>{forecast.temperature_max}</p>
-                </div>
-              );
+              return <DailyForecastInfo key={index} forecastInfo={forecast} />;
             })}
           </div>
         </div>
