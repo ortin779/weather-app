@@ -16,3 +16,39 @@ test('Should render Weather details', () => {
   const temperatureText = screen.getByText('Partly sunny');
   expect(temperatureText).toBeInTheDocument();
 });
+
+test('Should render loading details when details are loading', () => {
+  render(
+    <WeatherDetails
+      weatherInfo={{
+        isLoading: true,
+        hasError: false,
+      }}
+    />
+  );
+
+  const loaderBox = screen.getByTestId('loader');
+  expect(loaderBox).toBeInTheDocument();
+
+  const temperatureText = screen.getByText('Loading weather details');
+  expect(temperatureText).toBeInTheDocument();
+});
+
+test('Should render error screen when error occurs', () => {
+  render(
+    <WeatherDetails
+      weatherInfo={{
+        isLoading: false,
+        hasError: true,
+      }}
+    />
+  );
+
+  const errorIcon = screen.getByTestId('error-icon');
+  expect(errorIcon).toBeInTheDocument();
+
+  const temperatureText = screen.getByText(
+    'Error while fetching Weather Details...'
+  );
+  expect(temperatureText).toBeInTheDocument();
+});
