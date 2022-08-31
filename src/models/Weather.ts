@@ -9,7 +9,7 @@ interface CurrentWeatherInfo {
   };
 }
 
-interface DailyForcast extends CurrentWeatherInfo {
+interface DailyForecast extends CurrentWeatherInfo {
   day: Date;
   weather: string;
   temperature_min: number;
@@ -18,10 +18,10 @@ interface DailyForcast extends CurrentWeatherInfo {
 
 export type WeatherInfo = {
   current: CurrentWeatherInfo;
-  daily: DailyForcast[];
+  daily: DailyForecast[];
 };
 
-type AllDayDetails = Omit<DailyForcast, 'day'> & {
+type AllDayDetails = Omit<DailyForecast, 'day'> & {
   date: string;
   precipitation: {
     total: number;

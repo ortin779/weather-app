@@ -1,7 +1,8 @@
 .searchbar {
   display: flex;
   height: 2.5rem;
-  width: 40rem;
+  max-width: 40rem;
+  min-width: 10rem;
   padding: 0.25rem;
   align-self: center;
 }

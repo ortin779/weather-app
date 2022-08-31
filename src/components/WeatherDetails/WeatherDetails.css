@@ -1,27 +1,79 @@
 .detailsCard {
   border-radius: 0.5rem;
   background-color: rgba(255, 255, 255, 0.2);
-  padding: 0 10rem;
-  margin: 0 25%;
-  min-width: 300px;
+  min-width: 18rem;
+  width: 100%;
   display: flex;
   gap: 2rem;
   flex-direction: column;
   justify-content: start;
-  overflow: hidden;
+  overflow-y: scroll;
 }
 
 .summary {
   display: flex;
   gap: 1rem;
   align-items: center;
-  flex: 1;
+}
+
+.summary h4 {
+  margin-bottom: 0;
+}
+
+.currentDetails {
+  position: sticky;
+  top: 0;
+  padding: 1rem;
+  background: radial-gradient(
+    circle,
+    rgba(238, 174, 202, 1) 0%,
+    rgba(148, 187, 233, 1) 100%
+  );
 }
 
 .futureDetails {
   display: flex;
   gap: 1rem;
-  flex-direction: column;
-  flex: 2;
-  overflow: scroll;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 1.5rem;
+}
+
+.forecastCard {
+  width: 30%;
+  min-width: 18rem;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+@media only screen and (max-width: 600px) {
+  .summary {
+    width: 100%;
+  }
+  .summary div {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .currentDetails {
+    width: 100%;
+  }
+
+  .forecastCard {
+    width: 100%;
+    min-width: none;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    background-color: rgba(255, 255, 255, 0.2);
+  }
+
+  .futureDetails {
+    display: flex;
+    width: 100%;
+    gap: 1rem;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 1.5rem;
+  }
 }
