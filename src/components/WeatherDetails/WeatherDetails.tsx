@@ -36,7 +36,7 @@ const DailyForecastInfo = ({ forecastInfo }: DailyForecastInfoProps) => {
         <h4>Max: {temperature_max}&deg; C</h4>
       </div>
       <div>
-        <p>Wind speed {wind.speed}</p>
+        <p>Wind speed {wind.speed} km</p>
       </div>
     </div>
   );
