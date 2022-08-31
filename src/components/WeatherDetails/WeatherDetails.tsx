@@ -1,6 +1,7 @@
 import { AsyncState } from '../../hooks/use-async';
 import { LocationAPIResponse, WeatherInfo } from '../../models/Weather';
 import { getFormattedLocationName } from '../../utils/weatherDetails';
+import ErrorIcon from '../../icons/error.svg';
 import './WeatherDetails.css';
 
 type WeatherDetailsProps = {
@@ -49,7 +50,18 @@ export const WeatherDetails = ({
   const { isLoading, hasError, result: weather } = weatherInfo;
   return (
     <>
-      {isLoading && !hasError && <div>Loading weather details</div>}
+      {isLoading && !hasError && (
+        <div className="loading" data-testid="loader">
+          <div className="loader" />
+          <h2>Loading weather details</h2>
+        </div>
+      )}
+      {
+        <div className="errorBox">
+          <img src={ErrorIcon} data-testid="error-icon" />
+          <h4>Error while fetching Weather Details...</h4>
+        </div>
+      }
       {!isLoading && !hasError && weather && (
         <div className="detailsCard">
           <div className="currentDetails">
