@@ -56,12 +56,12 @@ export const WeatherDetails = ({
           <h2>Loading weather details</h2>
         </div>
       )}
-      {
+      {!isLoading && hasError && (
         <div className="errorBox">
           <img src={ErrorIcon} data-testid="error-icon" />
-          <h4>Error while fetching Weather Details...</h4>
+          <h3>Error while fetching Weather Details...</h3>
         </div>
-      }
+      )}
       {!isLoading && !hasError && weather && (
         <div className="detailsCard">
           <div className="currentDetails">
